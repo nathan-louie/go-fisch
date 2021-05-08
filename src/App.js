@@ -14,7 +14,7 @@ function App() {
       <div className="App">
         <div className="header">
           <img src="gofisch.png" alt="Go Fisch" width="150" />
-          <p>An easy way to start playing FischerRandom/Chess960 chess.</p>
+          <p>An easy way to start playing Fischer Random/Chess960 chess.</p>
         </div>
         <div className="main-actions">
           <div className="chessboard">
