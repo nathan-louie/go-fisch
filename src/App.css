@@ -6,6 +6,6 @@ body {
   text-align: center;
 }
 
-.chessboard div {
-  cursor: default !important;
+.chessboard {
+  max-width: 500px;
 }
