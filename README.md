@@ -1,7 +1,7 @@
 # gofisch
 I got hooked on playing chess ever since the pandemic started. I wanted a way to play Fischer Random chess, but there was no convenient way to do so on any popular chess websites. Thus, I made my own website to help others more easily play Fischer Random chess.
 
-You can see the live project [here]().
+You can see the live project [here](https://gofisch.netlify.app).
 
 ## What is Fischer Random Chess?
 Fischer Random chess, also known as Chess960, is a variation of chess invented by Bobby Fischer. The deviation from regular chess is that the starting position of the pieces on the back ranks is randomized following certain rules.

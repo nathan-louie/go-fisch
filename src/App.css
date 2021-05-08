@@ -2,10 +2,6 @@ body {
   background: #232527;
   font-family: "IBM Plex Sans";
 }
-
-.App {
-}
-
 .header {
   text-align: center;
   color: white;
@@ -26,7 +22,7 @@ body {
 }
 
 .chessboard {
-  width: 300px;
+  width: 500px;
 }
 
 button,
@@ -76,15 +72,15 @@ input {
 }
 
 .actions {
-  min-width: 300px;
+  min-width: 400px;
 }
 
 .actions > * {
-  margin-bottom: 48px;
+  margin-bottom: 100px;
 }
 
 .main-group > * {
-  margin-bottom: 30px;
+  margin-bottom: 70px;
 }
 
 .copy-link {

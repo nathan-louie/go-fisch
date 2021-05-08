@@ -4,12 +4,48 @@ import { useSnackbar } from "react-simple-snackbar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClipboard } from "@fortawesome/free-regular-svg-icons";
 import { faRandom, faChessKnight } from "@fortawesome/free-solid-svg-icons";
+import Slider, { SliderTooltip } from "rc-slider";
+import "rc-slider/assets/index.css";
+
+const { Handle } = Slider;
+
+const handle = (props) => {
+  const { value, dragging, index, ...restProps } = props;
+  return (
+    <SliderTooltip
+      prefixCls="rc-slider-tooltip"
+      overlay={`${value} mins`}
+      visible={dragging}
+      placement="top"
+      key={index}
+    >
+      <Handle value={value} {...restProps} />
+    </SliderTooltip>
+  );
+};
+
+const handle2 = (props) => {
+  const { value, dragging, index, ...restProps } = props;
+  return (
+    <SliderTooltip
+      prefixCls="rc-slider-tooltip"
+      overlay={`${value} secs`}
+      visible={dragging}
+      placement="top"
+      key={index}
+    >
+      <Handle value={value} {...restProps} />
+    </SliderTooltip>
+  );
+};
 
 export default function Actions(props) {
   const [openSnackbar] = useSnackbar();
   const [lichessLink, setLichessLink] = useState(
     "https://lichess.org/analysis"
   );
+  const [minutesPerSide, setMinutesPerSide] = useState(10);
+  const [incrementValue, setIncrementValue] = useState(10);
 
   const getStartPos = () => {
     let rank = new Array(8),
@@ -44,8 +80,8 @@ export default function Actions(props) {
 
     let prms = new URLSearchParams({
       rated: false,
-      "clock.limit": 10800,
-      "clock.increment": 60,
+      "clock.limit": minutesPerSide * 60,
+      "clock.increment": incrementValue,
       variant: "standard",
       fen: newStartPos,
     });
@@ -81,7 +117,6 @@ export default function Actions(props) {
     const responseJson = await response.json();
     if (responseJson) {
       setLichessLink(responseJson.challenge.url);
-      console.log(responseJson);
     }
   };
 
@@ -92,6 +127,64 @@ export default function Actions(props) {
           Randomize
           <FontAwesomeIcon style={{ "padding-left": "8px" }} icon={faRandom} />
         </button>
+        <label>Minutes per side:</label>
+        <Slider
+          min={1}
+          max={180}
+          defaultValue={minutesPerSide}
+          handleStyle={{
+            borderColor: "#378bfb",
+            backgroundColor: "white",
+          }}
+          activeDotStyle={{
+            borderColor: "#378bfb",
+            backgroundColor: "#378bfb",
+          }}
+          trackStyle={{ backgroundColor: "#378bfb", height: 5 }}
+          marks={{
+            20: 20,
+            40: 40,
+            60: 60,
+            80: 80,
+            100: 100,
+            120: 120,
+            140: 140,
+            160: 160,
+            180: 180,
+          }}
+          handle={handle}
+          onChange={(value) => setMinutesPerSide(value)}
+        />
+
+        <label>Increment in seconds:</label>
+        <Slider
+          min={0}
+          max={180}
+          defaultValue={incrementValue}
+          handleStyle={{
+            borderColor: "#378bfb",
+            backgroundColor: "white",
+          }}
+          activeDotStyle={{
+            borderColor: "#378bfb",
+            backgroundColor: "#378bfb",
+          }}
+          trackStyle={{ backgroundColor: "#378bfb", height: 5 }}
+          marks={{
+            0: 0,
+            20: 20,
+            40: 40,
+            60: 60,
+            80: 80,
+            100: 100,
+            120: 120,
+            140: 140,
+            160: 160,
+            180: 180,
+          }}
+          handle={handle2}
+          onChange={(value) => setIncrementValue(value)}
+        />
 
         <button onClick={handleLichess} className="main-button">
           Play on Lichess
