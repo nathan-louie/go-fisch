@@ -1,11 +1,103 @@
 body {
   background: #232527;
+  font-family: "IBM Plex Sans";
 }
 
 .App {
+}
+
+.header {
   text-align: center;
+  color: white;
+  margin-bottom: 50px;
+  margin-top: 30px;
+}
+
+.footer {
+  text-align: center;
+  color: #c0c0c0;
+  margin-top: 30px;
+  font-size: small;
+}
+
+.main-actions {
+  display: flex;
+  justify-content: space-around;
 }
 
 .chessboard {
-  max-width: 500px;
+  width: 300px;
+}
+
+button,
+input[type="submit"],
+input[type="reset"] {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+}
+
+button {
+  color: white;
+}
+
+label {
+  color: white;
+  font-size: small;
+}
+
+input {
+  border-style: none;
+}
+
+.fen-field {
+  padding: 16px;
+  width: 210px;
+  border-radius: 10px 0px 0px 10px;
+}
+
+.main-button {
+  padding: 16px;
+  background-color: #378bfb;
+  width: 100%;
+  border-radius: 10px;
+  font-weight: 700;
+}
+
+.copy-button {
+  padding: 16px;
+  background-color: #5b5b5b;
+  flex-grow: 1;
+  border-radius: 0px 10px 10px 0px;
+}
+
+.actions {
+  min-width: 300px;
+}
+
+.actions > * {
+  margin-bottom: 48px;
+}
+
+.main-group > * {
+  margin-bottom: 30px;
+}
+
+.copy-link {
+  display: flex;
+  margin-top: 10px;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+  transition: all 400ms ease-out;
+}
+
+a:hover {
+  color: #378bfb;
 }
