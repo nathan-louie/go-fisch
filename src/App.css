@@ -1,0 +1,11 @@
+body {
+  background: #232527;
+}
+
+.App {
+  text-align: center;
+}
+
+.chessboard div {
+  cursor: default !important;
+}
