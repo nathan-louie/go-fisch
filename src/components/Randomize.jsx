@@ -34,31 +34,15 @@ export default function Actions(props) {
       str.toLowerCase() + "/pppppppp/8/8/8/8/PPPPPPPP/" + str + " w KQkq - 0 1";
     props.setStartPos(newStartPos);
 
-    let prms = new URLSearchParams({
-      rated: false,
-      "clock.limit": props.minutesPerSide * 60,
-      "clock.increment": props.incrementValue,
-      variant: "standard",
-      fen: newStartPos,
-    });
-
-    makeLichessLink(prms);
-  };
-
-  const makeLichessLink = async (data) => {
-    const requestOptions = {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: data,
-    };
-    const response = await fetch(
-      `https://lichess.org/api/challenge/open`,
-      requestOptions
+    props.makeLichessLink(
+      new URLSearchParams({
+        rated: false,
+        "clock.limit": props.minutesPerSide * 60,
+        "clock.increment": props.incrementValue,
+        variant: "standard",
+        fen: newStartPos,
+      })
     );
-    const responseJson = await response.json();
-    if (responseJson) {
-      props.setLichessLink(responseJson.challenge.url);
-    }
   };
 
   return (

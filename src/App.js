@@ -1,5 +1,5 @@
 import "./App.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Chessboard from "react-simple-chessboard";
 import SnackbarProvider from "react-simple-snackbar";
 import GameActions from "./components/GameActions";
@@ -15,6 +15,34 @@ function App() {
   const [minutesPerSide, setMinutesPerSide] = useState(10);
   const [incrementValue, setIncrementValue] = useState(10);
 
+  useEffect(() => {
+    makeLichessLink(
+      new URLSearchParams({
+        rated: false,
+        "clock.limit": minutesPerSide * 60,
+        "clock.increment": incrementValue,
+        variant: "standard",
+        fen: startPos,
+      })
+    );
+  }, [minutesPerSide, incrementValue]);
+
+  const makeLichessLink = async (data) => {
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: data,
+    };
+    const response = await fetch(
+      `https://lichess.org/api/challenge/open`,
+      requestOptions
+    );
+    const responseJson = await response.json();
+    if (responseJson) {
+      setLichessLink(responseJson.challenge.url);
+    }
+  };
+
   return (
     <SnackbarProvider>
       <div className="App">
@@ -27,9 +55,9 @@ function App() {
             <Chessboard position={startPos} />
             <Randomize
               setStartPos={setStartPos}
-              setLichessLink={setLichessLink}
               minutesPerSide={minutesPerSide}
               incrementValue={incrementValue}
+              makeLichessLink={makeLichessLink}
             />
           </div>
           <GameActions
