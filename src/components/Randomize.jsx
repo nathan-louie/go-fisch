@@ -62,13 +62,11 @@ export default function Actions(props) {
   };
 
   return (
-    <div className="actions">
-      <div className="main-group">
-        <button onClick={randomizeStartPos} className="main-button">
-          Randomize
-          <FontAwesomeIcon style={{ paddingLeft: "8px" }} icon={faRandom} />
-        </button>
-      </div>
+    <div className="main-group">
+      <button onClick={randomizeStartPos} className="main-button">
+        Randomize
+        <FontAwesomeIcon style={{ paddingLeft: "8px" }} icon={faRandom} />
+      </button>
     </div>
   );
 }

@@ -2,7 +2,7 @@ body {
   background: #232527;
   font-family: "IBM Plex Sans";
   overflow-x: hidden;
-  padding: 20px 36px;
+  padding: 0px 36px;
 }
 
 h1 {
@@ -33,6 +33,7 @@ h1 {
 .main-actions {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-evenly;
 }
 
 .main-actions > * {
@@ -41,7 +42,7 @@ h1 {
 }
 
 .chessboard {
-  width: 45%;
+  width: 33%;
 }
 .chessboard > * {
   margin-bottom: 50px;
@@ -66,7 +67,9 @@ button {
 
 label {
   color: white;
-  font-size: small;
+  font-size: 16px;
+  display: inline-block;
+  margin-bottom: 16px !important;
 }
 
 input {
@@ -75,7 +78,7 @@ input {
 
 .fen-field {
   padding: 16px;
-  width: 260px;
+  width: 450px;
   border-radius: 10px 0px 0px 10px;
 }
 
@@ -95,15 +98,15 @@ input {
 }
 
 .actions {
-  min-width: 400px;
+  width: 30%;
 }
 
 .actions > * {
-  margin-bottom: 100px;
+  margin-bottom: 50px;
 }
 
 .main-group > * {
-  margin-bottom: 60px;
+  margin-bottom: 51px;
 }
 
 .copy-link {
@@ -121,9 +124,9 @@ a:hover {
   color: #378bfb;
 }
 
-@media screen and (max-width: 992px) {
+@media screen and (max-width: 900px) {
   body {
-    padding: 20px 8px;
+    padding: 0px 8px;
   }
 
   .App {
