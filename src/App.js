@@ -2,25 +2,45 @@ import "./App.css";
 import { useState } from "react";
 import Chessboard from "react-simple-chessboard";
 import SnackbarProvider from "react-simple-snackbar";
-import Actions from "./components/Actions";
+import GameActions from "./components/GameActions";
+import Randomize from "./components/Randomize";
 
 function App() {
   const [startPos, setStartPos] = useState(
     "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1"
   );
+  const [lichessLink, setLichessLink] = useState(
+    "https://lichess.org/analysis"
+  );
+  const [minutesPerSide, setMinutesPerSide] = useState(10);
+  const [incrementValue, setIncrementValue] = useState(10);
 
   return (
     <SnackbarProvider>
       <div className="App">
         <div className="header">
-          <img src="gofisch.png" alt="Go Fisch" width="150" />
+          <img src="gofisch.png" alt="Go Fisch" width="200" />
           <p>An easy way to start playing Fischer Random/Chess960 chess.</p>
         </div>
         <div className="main-actions">
           <div className="chessboard">
             <Chessboard position={startPos} />
+            <Randomize
+              setStartPos={setStartPos}
+              setLichessLink={setLichessLink}
+              minutesPerSide={minutesPerSide}
+              incrementValue={incrementValue}
+            />
           </div>
-          <Actions startPos={startPos} setStartPos={setStartPos} />
+          <GameActions
+            startPos={startPos}
+            setStartPos={setStartPos}
+            minutesPerSide={minutesPerSide}
+            incrementValue={incrementValue}
+            setMinutesPerSide={setMinutesPerSide}
+            setIncrementValue={setIncrementValue}
+            lichessLink={lichessLink}
+          />
         </div>
         <div className="footer">
           <p>

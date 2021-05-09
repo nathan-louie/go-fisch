@@ -1,12 +1,26 @@
 body {
   background: #232527;
   font-family: "IBM Plex Sans";
+  overflow-x: hidden;
+  padding: 20px 36px;
 }
+
+h1 {
+  margin-top: 0;
+  margin-bottom: 30px !important;
+  color: white;
+}
+
+.App {
+  width: 100%;
+}
+
 .header {
   text-align: center;
   color: white;
   margin-bottom: 50px;
   margin-top: 30px;
+  line-height: 180%;
 }
 
 .footer {
@@ -18,11 +32,19 @@ body {
 
 .main-actions {
   display: flex;
-  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.main-actions > * {
+  padding-left: 48px;
+  padding-right: 48px;
 }
 
 .chessboard {
-  width: 500px;
+  width: 45%;
+}
+.chessboard > * {
+  margin-bottom: 50px;
 }
 
 button,
@@ -39,6 +61,7 @@ input[type="reset"] {
 
 button {
   color: white;
+  font-size: 24px;
 }
 
 label {
@@ -52,7 +75,7 @@ input {
 
 .fen-field {
   padding: 16px;
-  width: 210px;
+  width: 260px;
   border-radius: 10px 0px 0px 10px;
 }
 
@@ -80,7 +103,7 @@ input {
 }
 
 .main-group > * {
-  margin-bottom: 70px;
+  margin-bottom: 60px;
 }
 
 .copy-link {
@@ -96,4 +119,36 @@ a {
 
 a:hover {
   color: #378bfb;
+}
+
+@media screen and (max-width: 992px) {
+  body {
+    padding: 20px 8px;
+  }
+
+  .App {
+    width: 100%;
+  }
+
+  .main-actions > * {
+    padding: 0;
+  }
+
+  .main-group {
+    margin-bottom: 0px;
+  }
+
+  .chessboard {
+    width: 100%;
+    margin: 0;
+  }
+
+  .chessboard > * {
+    margin-bottom: 20px;
+  }
+
+  .actions {
+    min-width: 0px;
+    width: 100%;
+  }
 }
